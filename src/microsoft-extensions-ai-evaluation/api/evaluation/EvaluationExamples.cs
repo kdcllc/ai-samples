@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using dotenv.net;
 using Evaluation.Setup;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.AI.Evaluation;
@@ -41,6 +42,13 @@ public partial class EvaluationExamples
     [ClassInitialize]
     public static async Task InitializeAsync(TestContext _)
     {
+        var envFile = "test.env";
+        if (File.Exists(envFile))
+        {
+            DotEnv.Load(options: new DotEnvOptions(envFilePaths: [envFile]));
+            Console.WriteLine($"Loaded environment variables from {envFile}");
+        }
+
         /// Set up the <see cref="ChatConfiguration"/> which includes the <see cref="IChatClient"/> that all the
         /// evaluators used in the current sample project will use to communicate with the LLM.
         s_chatConfiguration = TestSetup.GetChatConfiguration();

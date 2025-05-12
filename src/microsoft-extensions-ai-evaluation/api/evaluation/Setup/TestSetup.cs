@@ -33,7 +33,7 @@ public class TestSetup
     {
         if (s_chatConfiguration is null)
         {
-            s_chatConfiguration = GetAzureOpenAIChatConfiguration(); // Switch this to any of the below providers as needed.
+            s_chatConfiguration = GetOllamaChatConfiguration(); // Switch this to any of the below providers as needed.
 
             /// Note: The examples included in this solution have been primarily tested against the GPT-4o model. The
             /// prompts present within the examples directly, as well as the prompts present within the
